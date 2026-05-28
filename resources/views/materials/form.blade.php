@@ -28,12 +28,17 @@
           <form action="" method="POST" enctype="multipart/form-data">
             @csrf()
 
+            @isset($material)
+            @method('put')
+            @endisset
+
             <div class="mb-3">
               <label for="nome" class="form-label">Nome</label>
               <input 
                 type="text" 
                 class="form-control" 
                 name="name" 
+                value="{{$material->name ?? null}}"
                 id="nome" 
                 placeholder="Nome do material" 
                 value="{{ old('name') }}"
@@ -48,7 +53,7 @@
                 id="descricao" 
                 rows="3" 
                 placeholder="Descreva o material"
-                required>{{ old('description') }}</textarea>
+                required>{{ $material->description ?? null}}</textarea>
             </div>
 
             <div class="mb-3">
@@ -57,6 +62,7 @@
                 type="file" 
                 class="form-control" 
                 name="file_url" 
+                value="{{$material->file_url ?? null}}"
                 id="arquivo" 
                 required>
             </div>

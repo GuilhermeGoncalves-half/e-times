@@ -29,3 +29,5 @@ Route:: post ('/sign-up', [UserController::class, 'store']);
 Route:: get ('/materials/new', [MaterialController::class, 'create']);
 Route:: post ('/materials/new', [MaterialController::class, 'store']);
 Route:: get ('/materials', [MaterialController::class, 'index']);
+Route:: get('/materials/edit/{id}', [MaterialController::class, 'edit']);
+Route:: put('/materials/edit/{id}', [MaterialController::class, 'update']);

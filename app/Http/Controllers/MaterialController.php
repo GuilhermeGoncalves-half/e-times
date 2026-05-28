@@ -11,12 +11,12 @@ class MaterialController extends Controller
 {
 
     //retorna a view com o form para cadastrar o usuário
-    public function Create(){
+    public function create(){
         return view ("materials/form");
     }
 
     //recebe os dados para armazenar no banco de dados
-    public function Store(Request $request){
+    public function store(Request $request){
         //criar um novo material
         $material = new Material();
 
@@ -37,6 +37,19 @@ class MaterialController extends Controller
         return View('materials/table', [
             'materials'=> $materials
         ]);
+    }
+
+    public function edit($id){
+
+        $material = Material::findOrFail($id);
+
+        return view("materials/form",[
+            "material" => $material
+        ]);
+    }
+
+    public function update(Request $request){
+        return redirect("/materials/edit");
     }
     
 }
